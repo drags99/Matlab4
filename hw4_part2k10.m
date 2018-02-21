@@ -9,7 +9,7 @@ U_L=0;
 v=1;
 A=1;
 lamda=-1*k^2;
-N=300;
+N=30;
 h=L/(N+1);
 
 %creating coefficient matrix 
@@ -23,10 +23,10 @@ coeff(1,2)=2;
 coeff(N,N-1)=1;
 coeff(N,N)=(h^2)*lamda-2;
 
-%assigning values for row between 2 and N
+%assigning values for row between 2 and N-1
 for i=2:N-1 %rows
     coeff(i,i-1)=1;
-    coeff(i,i)=(h^2)*lamda-2;
+    coeff(i,i)=-1*(k^2)*(h^2)-2;
     coeff(i,i+1)=1;
 
 end
@@ -39,8 +39,7 @@ f(N)=A*(h^2)-U_L;
 %tri-diagonal algorithm
 
 %creating and setting first value in g matrix
-g=zeros(N,1);
-g(1)=f(1);
+g=f
 
 %creating matrix's a,b,c to hold values needed for algorithm
 a=zeros(N,1);
@@ -69,9 +68,10 @@ u=zeros(N,1);
 u(N)=g(N)/a(N);
 
 %finding rest of u
-for k = 1:N-1
-    u(N-k)=(g(N-k)-c(N-k)*u(N-k))/a(N-k);
+for k = (N-1):-1:1
+    u(k)=(g(k)-(c(k))*u(k+1))/a(k);
 end
+
 
 %error calculation
 x=h:h:1-h;
@@ -80,5 +80,5 @@ for i=1:N
     exact_solution(i,1)=Part2_exact(x(i),k);
 end
 
-plot(x,exact_solution,x,u)
+plot(x,exact_solution,'+',x,u,'x')
 legend('exact solution','aproximate solution')

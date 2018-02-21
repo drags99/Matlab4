@@ -1,15 +1,15 @@
-%homework 4 part 2 for k=100
+%homework 4 part 2 for k=10
 clear;
 clc;
 
 %defining parameters
-k=100;
+k=10;
 L=1;
 U_L=0;
 v=1;
 A=1;
 lamda=-1*k^2;
-N=30;
+N=50;
 h=L/(N+1);
 
 %creating coefficient matrix 
@@ -80,5 +80,5 @@ for i=1:N
     exact_solution(i,1)=Part2_exact(x(i),k);
 end
 
-plot(x,exact_solution,'+',x,u,'x')
+plot(x,exact_solution)
 legend('exact solution','aproximate solution')

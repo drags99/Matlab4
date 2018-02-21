@@ -1,9 +1,9 @@
-%homework 4 part 2 for k=100
+%homework 4 part 2 for k=1
 clear;
 clc;
 
 %defining parameters
-k=100;
+k=1;
 L=1;
 U_L=0;
 v=1;

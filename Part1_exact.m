@@ -4,7 +4,7 @@ L=1;
 U_0=1;
 A=1;
 
-u=(1-(sinh(k*(L-x))+sinh(k*x))/sinh(k*L))*(A/(k^2))+U_0*sinh(k*(L-x))/sinh(k*L);
+u=(((sinh(k*(L-x))+sinh(k*x))/sinh(k*L))-1)*(A/(k^2))+U_0*sinh(k*(L-x))/sinh(k*L);
 
 end
 
