@@ -3,13 +3,13 @@ clear;
 clc;
 
 %defining parameters
-k=100;
+K=100;
 L=1;
 U_L=0;
 v=1;
 A=1;
-lamda=-1*k^2;
-N=30;
+lamda=-1*K^2;
+N=500;
 h=L/(N+1);
 
 %creating coefficient matrix 
@@ -26,7 +26,7 @@ coeff(N,N)=(h^2)*lamda-2;
 %assigning values for row between 2 and N-1
 for i=2:N-1 %rows
     coeff(i,i-1)=1;
-    coeff(i,i)=-1*(k^2)*(h^2)-2;
+    coeff(i,i)=-1*(K^2)*(h^2)-2;
     coeff(i,i+1)=1;
 
 end
@@ -39,7 +39,7 @@ f(N)=A*(h^2)-U_L;
 %tri-diagonal algorithm
 
 %creating and setting first value in g matrix
-g=f
+g=f;
 
 %creating matrix's a,b,c to hold values needed for algorithm
 a=zeros(N,1);
@@ -77,7 +77,7 @@ end
 x=h:h:1-h;
 exact_solution=[];
 for i=1:N
-    exact_solution(i,1)=Part2_exact(x(i),k);
+    exact_solution(i,1)=Part2_exact(x(i),K);
 end
 
 plot(x,exact_solution,'+',x,u,'x')

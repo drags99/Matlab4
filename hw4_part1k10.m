@@ -3,13 +3,13 @@ clear;
 clc;
 
 %defining parameters
-k=10;
+K=10;
 L=1;
 U_0=1;
 U_L=0;
 v=1;
 A=1;
-lamda=-1*k^2;
+lamda=-1*K^2;
 N=500;
 h=L/(N+1);
 
@@ -17,12 +17,12 @@ h=L/(N+1);
 coeff=zeros(N,N);
 
 %first row assignment
-coeff(1,1)=-1*(h^2)*(k^2)-2;
+coeff(1,1)=-1*(h^2)*(K^2)-2;
 coeff(1,2)=1;
 
 %last row assignment
 coeff(N,N-1)=1;
-coeff(N,N)=-1*(h^2)*(k^2)-2;
+coeff(N,N)=-1*(h^2)*(K^2)-2;
 
 %assigning values for row between 2 and N
 for i=2:N-1 %rows
@@ -77,7 +77,7 @@ end
 x=h:h:1-h;
 exact_solution=[];
 for i=1:N
-    exact_solution(i,1)=Part1_exact(x(i),k);
+    exact_solution(i,1)=Part1_exact(x(i),K);
 end
 
 plot(x,exact_solution,'+',x,u,'x')
